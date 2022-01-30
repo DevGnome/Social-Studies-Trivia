@@ -17,9 +17,9 @@ window.addEventListener("DOMContentLoaded", () =>{
 //Function that Renders the Question and answers
 function renderQuestions(data){
     document.querySelector("#question").innerHTML = `${data.results[0].question}`
-    document.getElementById('option1').innerHTML = `${data.results[0].correct_answer}`
-    document.getElementById('option2').innerHTML = `${data.results[0].incorrect_answers[0]}`
-    document.getElementById('option3').innerHTML = `${data.results[0].incorrect_answers[1]}`
-    document.getElementById('option4').innerHTML = `${data.results[0].incorrect_answers[2]}`
+    document.getElementById('answer-text1').innerHTML = `${data.results[0].correct_answer}`;
+    document.getElementById('answer-text2').innerHTML = `${data.results[0].incorrect_answers[0]}`;
+    document.getElementById('answer-text3').innerHTML = `${data.results[0].incorrect_answers[1]}`;
+    document.getElementById('answer-text4').innerHTML = `${data.results[0].incorrect_answers[2]}`;
 }
 //Function to get next question
