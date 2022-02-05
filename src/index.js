@@ -7,6 +7,8 @@ const BASE_URL = "https://opentdb.com/api.php?amount=1&category=18&type=multiple
 
 //DOMContentLoaded Listener.
 window.addEventListener("DOMContentLoaded", () =>{
+    //Disable New Question Button until answer chosen
+    document.getElementById("new-question").disabled = true;
     getQuestion();
     handleClick();
 
@@ -40,8 +42,16 @@ function renderQuestion(data){
 function handleClick(){
     document.addEventListener("click", (e)=>{
         let chosen = e.target;
+        //So far this is the only way I've been able to disable all butons on press.
+        //Will revisit with better solution
+        document.getElementById("btn1").disabled = true;
+        document.getElementById("btn2").disabled = true;
+        document.getElementById("btn3").disabled = true;
+        document.getElementById("btn4").disabled = true;
+        document.getElementById("new-question").disabled = false;
 
-            if(chosen.type === "option" && chosen.innerHTML === correctChoice){
+        if(chosen.type === "answer-button" && chosen.innerHTML === correctChoice){
+
                 document.getElementById("result").innerHTML = "That Is Correct"
             }
             else{
