@@ -8,8 +8,11 @@ const BASE_URL = "https://opentdb.com/api.php?amount=1&category=18&type=multiple
 //DOMContentLoaded Listener.
 window.addEventListener("DOMContentLoaded", () =>{
     getQuestion();
-   
-})
+    handleClick();
+
+});
+
+
 //Get Question Function
 function getQuestion(){
     fetch(BASE_URL)
@@ -17,11 +20,12 @@ function getQuestion(){
     .then(data => renderQuestion(data))
     // .then(data => console.log(data))
 }
-//Function that Renders the Question and answers
+//Function that Renders the Question and Answers
 function renderQuestion(data){
     let answerChoices = [...data.results[0].incorrect_answers]
+    let correctChoice = data.results[0].correct_answer;
     data.results[0].answer = Math.floor(Math.random()*4)+1;
-    answerChoices.splice(data.results[0].answer - 1, 0, data.results[0].correct_answer);
+    answerChoices.splice(data.results[0].answer - 1, 0, correctChoice);
     console.log(answerChoices);
     //Display Question
     document.getElementById("question").innerHTML = `${data.results[0].question}`
@@ -32,8 +36,20 @@ function renderQuestion(data){
     document.getElementById("answer-text4").innerHTML = `${answerChoices[3]}`
 }    
 
+//Function for EventListener
+function handleClick(){
+    document.addEventListener("click", (e)=>{
+        let chosen = e.target;
 
-//Function for EventListener.
+            if(chosen.type === "option" && chosen.innerHTML === correctChoice){
+                document.getElementById("result").innerHTML = "That Is Correct"
+            }
+            else{
+                document.getElementById("result").innerHTML = "Sorry, That Is Incorrect"
+            }
+        })
+        
+}
 //If -> correct answer button clicked -> Correct! Maybe change button color?
 //Else -> Incorrect! maybe change button color red. 
 //-------->Prevent Clicking of Buttons AFTER choice made<----------
