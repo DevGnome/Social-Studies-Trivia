@@ -10,38 +10,43 @@
 
     <!-- import the webpage's javascript file -->
     <script src="index.js" ></script>
+    <link rel="stylesheet" href="index.css">
   </head>
-  <body>
-    <h1>Category</h1>
-    <h4>Type of Question</h2>
-    <div class="panel">
-      
 
-        </div>
+  <body>
+    <main>
+        <!-- Would like the Category to be changeable if made more complex-->
+        <h1>Computer Science Questions</h1>
+        <!-- Would like this to be changeable based on MC, T/F, Both-->
+        <h4>Multiple</h2>
+
         <div class="question-container" id="question">
 
         </div>
         
-        <div class="answer-container">
-            
+        <div style="display: flex" class="answer-container">
+            <br>
             <button type="answer-button" class='option' id="btn1">A</button>
             <p id="answer-text1">A</p>
-          <br>
+        </div>  
+        <div style="display: flex" class="answer-container">
             <button type="answer-button" class='option'id="btn2">B</button>
             <p id="answer-text2">B</p>
-          <br>
+        </div>
+        <div style="display: flex" class="answer-container">
             <button type="answer-button" class='option' id="btn3">C</button>
             <p id="answer-text3">C</p>
-          <br>
+        </div>
+        <div style="display: flex" class="answer-container">
             <button type="answer-button" class='option' id="btn4">D</button>
             <p id="answer-text4">D</p>
-
         </div>
         <div class="result-container">
             <p id="result"></p>
             <br>
             <button type="button" onClick="window.location.reload();" id="new-question">New Question</button>
         </div>
+    </main>
        
   </body>
 </html>
