@@ -6,6 +6,7 @@
 
 html, body{
     height: 100%;
+    display:block;
 }
 
 
@@ -26,59 +27,39 @@ main{
     background-position: center;
 }
 .question-container{
-    text-align:left;
+    text-align: left;
     border: 1px solid black;
     padding-left: 2px;
     padding-right: 2px;
     background-color: khaki;
     height: fit-content;
     width: 400px;
-    font-size: 16px;
+    font-size: 20px;
+    
 }
 .option{
+    border: 2px solid black;
+    padding-left: 2px;
+    padding-right: 2px;
     background-color: khaki;
     height: 25px;
-    width: 25px;
+    width: 375px;
+    font-size: 16px;
+    text-align:  center;
 }
 .option:hover{
     background-color: white;
 }
-#answer-text1{
-    border: 2px solid black;
-    padding-left: 2px;
-    padding-right: 2px;
-    background-color: khaki;
-    height: 25px;
-    width: 375px;
-    font-size: 16px;
-    text-align:  center;
+.option:focus{
+    background-color: white;
 }
-#answer-text2{
-    border: 2px solid black;
-    padding-left: 2px;
-    padding-right: 2px;
-    background-color: khaki;
-    height: 25px;
-    width: 375px;
-    font-size: 16px;
-    text-align:  center;
-}#answer-text3{
-    border: 2px solid black;
-    padding-left: 2px;
-    padding-right: 2px;
-    background-color: khaki;
-    height: 25px;
-    width: 375px;
-    font-size: 16px;
-    text-align:  center;
-}#answer-text4{
-    border: 2px solid black;
-    padding-left: 2px;
-    padding-right: 2px;
-    background-color: khaki;
-    height: 25px;
-    width: 375px;
-    font-size: 16px;
-    text-align:  center;
-    
+.result-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    background-size: cover;
+    background-position: center;
+    font-size: 20px;
 }
