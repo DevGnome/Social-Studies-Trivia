@@ -7,7 +7,9 @@
 
     <!-- import the webpage's stylesheet 
     <link rel="stylesheet" href="/index.css" /> -->
-
+    <script> function getInfo(){
+       window.open("https://www.google.com/search?q="+document.getElementById('question').innerHTML)}
+    </script>
     <!-- import the webpage's javascript file -->
     <script src="index.js" ></script>
     <link rel="stylesheet" href="index.css">
@@ -15,8 +17,19 @@
 
   <body>
     <main>
+        <div class="category-container" id="category-buttons">
+            <button type="button " class="category" id="history">
+                History
+            </button>
+            <button type="button " class="category" id="mythology">
+                Mythology
+            </button>
+            <button type="button " class="category" id="geography">
+                Geography
+            </button>
+        </div>
         <!-- Would like the Category to be changeable if made more complex-->
-        <h1>Computer Science Questions</h1>
+        <h1>Social Studies Questions</h1>
         <!-- Would like this to be changeable based on MC, T/F, Both-->
         <h4>Multiple Choice</h2>
 
@@ -25,26 +38,25 @@
         
         <div style="display: flex" class="answer-container">
         <br>
-            <button type="answer-button" class='option' id="answer-text1"></button>
+            <button type="button" class='option' id="answer-text1"></button>
         </div>  
         <div style="display: flex" class="answer-container">
-            <button type="answer-button" class='option'id="answer-text2"></button>
+            <button type="button" class='option'id="answer-text2"></button>
         </div>
         <div style="display: flex" class="answer-container">
-            <button type="answer-button" class='option' id="answer-text3"></button>
+            <button type="button" class='option' id="answer-text3"></button>
         </div>
         <div style="display: flex" class="answer-container">
-            <button type="answer-button" class='option' id="answer-text4"></button>
+            <button type="button" class='option' id="answer-text4"></button>
         </div>
         <br>
         <div class="result-container">
             <p id="result"></p>
             <p hidden id="correct-answer"></p>
-
             <br><br>
         </div>
-        <div class="result-container">
-            <button type="button" onClick="window.location.reload();" id="new-question">New Question</button>
+        <div>
+            <button onclick="getInfo()" type="button" id="more-info">More Information</button>
         </div>
     </main>
        

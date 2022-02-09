@@ -8,12 +8,11 @@
 // 
 // 
 //URL for Chosen API 
-const BASE_URL = "https://opentdb.com/api.php?amount=1&category=18&type=multiple"
+ //BASE_URL = "https://opentdb.com/api.php?amount=1&type=multiple"
 
 //DOMContentLoaded Listener.
 window.addEventListener("DOMContentLoaded", () =>{
     //Disable New Question Button until answer chosen
-    document.getElementById("new-question").disabled = true;
     getQuestion();
     handleAnswer();
     function handleAnswer(){
@@ -21,35 +20,51 @@ window.addEventListener("DOMContentLoaded", () =>{
     
             if(e.target.className === 'option'){
                 console.log(e.target.innerHTML);
-                document.getElementById("new-question").disabled = false;
+                //document.getElementById("new-question").disabled = false;
     
                 if(e.target.innerHTML === document.getElementById("correct-answer").innerHTML
                 ){
                     document.getElementById("result").innerHTML = "That Is Correct!"
                     document.getElementById('result').style.cssText = `background-color: green; border: 1px solid black; padding-left: 2px;
                     padding-right: 2px;`
+                    document.getElementById("more-info").disabled = false;
+                    
                 }
                 else{
                     document.getElementById("result").innerHTML = "Try Again!"
                     document.getElementById('result').style.cssText=`background-color: red; border: 1px solid black; padding-left: 2px;
                     padding-right: 2px;`
-
+                    
                 }
             }
         })
     }
-
 });
 
 
 //Get Question Function
 function getQuestion(){
-    fetch(BASE_URL)
-    .then(response => response.json())
-    .then(data => renderQuestion(data))
-    // .then(data => console.log(data);
-
+    addEventListener('click', (e) =>{
+        if(e.target.id === 'geography'){
+            fetch("https://opentdb.com/api.php?amount=1&category=22&type=multiple")
+            .then(response => response.json())
+            .then(data => renderQuestion(data))
+            // .then(data => console.log(data);
+            
+        }
+        else if(e.target.id === 'history'){
+            fetch("https://opentdb.com/api.php?amount=1&category=23&type=multiple")
+            .then(response => response.json())
+            .then(data => renderQuestion(data))            
+        }
+        else if(e.target.id === 'mythology'){
+            fetch("https://opentdb.com/api.php?amount=1&category=20&type=multiple")
+            .then(response => response.json())
+            .then(data => renderQuestion(data))            
+        }
+    })
 }
+
 //Function that Renders the Question and Answers
 function renderQuestion(data){
     //Create array containing incorrect answers
@@ -73,5 +88,6 @@ function renderQuestion(data){
     document.getElementById("answer-text4").innerHTML = `${answerChoices[3]}`
     //Put correctAnswer in a hidden tag because I can't figure out another way to get the data into eventlistener
     document.getElementById("correct-answer").innerHTML = `${data.results[0].correct_answer}`;
-}    
+}   
+
 
