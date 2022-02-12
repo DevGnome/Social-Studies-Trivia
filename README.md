@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# phase-1-project
-=======
 # Social Studies Trivia Phase-1 Project
 ## Description
 This is a simple frontend that accesses data from the OpenTDB public api. There is an option of choosing questions from 4 categories: History, Mythology, Geography and Politics. A button for each category is displayed and when clicked will render a question.
@@ -22,4 +19,4 @@ Guesses can be attempted until the correct answer is chosen. Choosing an answer 
 
 ## Contributors
 Hugh Witchella - Flatiron School Student
->>>>>>> 5c1ed357fe5a377c29d4d5d1548f925187ca96cc
+
