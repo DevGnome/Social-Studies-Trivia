@@ -44,19 +44,29 @@ function getQuestion(){
             .then(data => renderQuestion(data))
             // .then(data => console.log(data);
             document.getElementById("more-info").disabled = true;
+            document.getElementById("result").innerHTML = '';
             
         }
         else if(e.target.id === 'history'){
             fetch("https://opentdb.com/api.php?amount=1&category=23&type=multiple")
             .then(response => response.json())
             .then(data => renderQuestion(data)) 
-            document.getElementById("more-info").disabled = true;           
+            document.getElementById("more-info").disabled = true; 
+            document.getElementById("result").innerHTML = '';      
         }
         else if(e.target.id === 'mythology'){
             fetch("https://opentdb.com/api.php?amount=1&category=20&type=multiple")
             .then(response => response.json())
             .then(data => renderQuestion(data))
-            document.getElementById("more-info").disabled = true;            
+            document.getElementById("more-info").disabled = true;    
+            document.getElementById("result").innerHTML = '';        
+        }
+        else if(e.target.id === 'politics'){
+            fetch("https://opentdb.com/api.php?amount=1&category=24&type=multiple")
+            .then(response => response.json())
+            .then(data => renderQuestion(data))
+            document.getElementById("more-info").disabled = true; 
+            document.getElementById("result").innerHTML = '';
         }
     })
 }
@@ -69,18 +79,17 @@ function handleAnswer(){
             console.log(e.target.innerHTML);
             //document.getElementById("new-question").disabled = false;
 
-            if(e.target.innerHTML === document.getElementById("correct-answer").innerHTML
-            ){
-                document.getElementById("result").innerHTML = "That Is Correct!"
+            if(e.target.innerHTML === document.getElementById("correct-answer").innerHTML){
+                document.getElementById("result").innerHTML = "That Is Correct!";
                 document.getElementById('result').style.cssText = `background-color: green; border: 1px solid black; padding-left: 2px;
-                padding-right: 2px;`
+                padding-right: 2px;`;
                 document.getElementById("more-info").disabled = false;
                 
             }
             else{
-                document.getElementById("result").innerHTML = "Try Again!"
+                document.getElementById("result").innerHTML = "Try Again!";
                 document.getElementById('result').style.cssText=`background-color: red; border: 1px solid black; padding-left: 2px;
-                padding-right: 2px;`
+                padding-right: 2px;`;
                 
             }
         }
@@ -90,7 +99,7 @@ function handleAnswer(){
 //Function that Renders the Question and Answers
 function renderQuestion(data){
     //Create array containing incorrect answers
-    const answerChoices = [...data.results[0].incorrect_answers]
+    const answerChoices = [...data.results[0].incorrect_answers];
     //This variable was added with the hope of being able to use it for my
     //handleAnswer function. I could not get it to work, which I am thinking
     //may be due to scope maybe? It would not call in the function and might be due to the
@@ -107,15 +116,15 @@ function renderQuestion(data){
     console.log(correctAnswer);
 
     //Display Question
-    document.getElementById("question").innerHTML = `${data.results[0].question}`
+    document.getElementById("question").innerHTML = `${data.results[0].question}`;
     //Display Answers Choices --- Could be cleaner? Still looking for other ways to complete this
     //In my initial steps I didn't have a way to randomize where the right answer would be
     //Using the above code to create random index of answers allowed me to do that,
     //preventing me from needing to have it set that there would always be a specific 'correct' button.
-    document.getElementById("answer-text1").innerHTML = `${answerChoices[0]}`
-    document.getElementById("answer-text2").innerHTML = `${answerChoices[1]}`
-    document.getElementById("answer-text3").innerHTML = `${answerChoices[2]}`
-    document.getElementById("answer-text4").innerHTML = `${answerChoices[3]}`
+    document.getElementById("answer-text1").innerHTML = `${answerChoices[0]}`;
+    document.getElementById("answer-text2").innerHTML = `${answerChoices[1]}`;
+    document.getElementById("answer-text3").innerHTML = `${answerChoices[2]}`;
+    document.getElementById("answer-text4").innerHTML = `${answerChoices[3]}`;
     //Put correctAnswer in a hidden tag because I can't figure out another way to get the data.result[0].correct_answer into eventlistener
     //This is not preferred since someone could inspect the elements to find the answer if they wanted to
     document.getElementById("correct-answer").innerHTML = `${data.results[0].correct_answer}`;

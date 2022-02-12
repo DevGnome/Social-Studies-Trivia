@@ -65,7 +65,7 @@ main{
     background-position: center;
     font-size: 20px;
 }
-#history, #mythology, #geography{
+#history, #mythology, #geography, #politics{
     border: 2px solid black;
     padding-left: 2px;
     padding-right: 2px;
