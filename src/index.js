@@ -21,6 +21,14 @@ window.addEventListener("DOMContentLoaded", () =>{
     getQuestion();
     handleAnswer();
     document.getElementById("more-info").disabled = true;
+    //Prevents clicking the more info button until correct answer is chosen
+    //more info button on click opens a google search for the question text in a new tab
+    //This is imperfect: First Implementation had a search for the answer but that didn't always display relevant info,
+    //i.e. the answer being 6 and a search just being about the number not the relevance to the question
+    //Second Implementation searches the question, which is less likely to display information lacking relevance
+    //although this still has cases where the question search result lacks all relevant info.
+    //**Will work on this in future rebuild. 
+    
 });
 
 
@@ -35,17 +43,20 @@ function getQuestion(){
             .then(response => response.json())
             .then(data => renderQuestion(data))
             // .then(data => console.log(data);
+            document.getElementById("more-info").disabled = true;
             
         }
         else if(e.target.id === 'history'){
             fetch("https://opentdb.com/api.php?amount=1&category=23&type=multiple")
             .then(response => response.json())
-            .then(data => renderQuestion(data))            
+            .then(data => renderQuestion(data)) 
+            document.getElementById("more-info").disabled = true;           
         }
         else if(e.target.id === 'mythology'){
             fetch("https://opentdb.com/api.php?amount=1&category=20&type=multiple")
             .then(response => response.json())
-            .then(data => renderQuestion(data))            
+            .then(data => renderQuestion(data))
+            document.getElementById("more-info").disabled = true;            
         }
     })
 }
