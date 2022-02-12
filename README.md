@@ -21,3 +21,7 @@ Guesses can be attempted until the correct answer is chosen. Choosing an answer 
 
 ## Contributors
 Hugh Witchella - Flatiron School Student
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin
