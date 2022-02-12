@@ -1,6 +1,6 @@
 # Social Studies Trivia Phase-1 Project
 ## Demo App
-![Demo app](app-demo.gif)
+![App Demo](https://i.imgur.com/ZX4Yi5G.gifv)
 ## Description
 This is a simple frontend that accesses data from the OpenTDB public api. There is an option of choosing questions from 4 categories: History, Mythology, Geography and Politics. A button for each category is displayed and when clicked will render a question.
 
