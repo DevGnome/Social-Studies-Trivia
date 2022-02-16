@@ -1,6 +1,6 @@
 # Social Studies Trivia Phase-1 Project
 ## Demo App
-The App can be tested using this link: https://social-studies-trivia-phase-1-project.glitch.me/src
+The App can be tested using this link: https://social-studies-trivia-phase-1-project.glitch.me/src/
 The gif below demonstrates how to initialize the app
 ![App Demo](https://i.imgur.com/iMrJrR0.gif)
 ## Description
