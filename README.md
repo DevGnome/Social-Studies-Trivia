@@ -1,6 +1,6 @@
 # Social Studies Trivia Phase-1 Project
 ## Demo App
-The App can be tested using this link: https://social-studies-trivia-phase-1-project.glitch.me
+The App can be tested using this link: https://social-studies-trivia-phase-1-project.glitch.me/src
 The gif below demonstrates how to initialize the app
 ![App Demo](https://i.imgur.com/iMrJrR0.gif)
 ## Description
@@ -13,7 +13,6 @@ Guesses can be attempted until the correct answer is chosen. Choosing an answer 
 * Will ALWAYS be multiple choice
 * There will ALWAYS be 4 choices
 * Question difficulty includes Easy, Medium and Hard
-
 ## Future Plans
 * Make CSS more visually pleasing
 * Cleaner code
