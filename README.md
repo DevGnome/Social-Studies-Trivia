@@ -2,7 +2,7 @@
 ## Demo App
 The App can be tested using this link: https://social-studies-trivia-phase-1-project.glitch.me
 The gif below demonstrates how to initialize the app
-![App Demo](https://i.imgur.com/ZX4Yi5G.gif)
+![App Demo](https://i.imgur.com/iMrJrR0.gif)
 ## Description
 This is a simple frontend that accesses data from the OpenTDB public api. There is an option of choosing questions from 4 categories: History, Mythology, Geography and Politics. A button for each category is displayed and when clicked will render a question.
 
