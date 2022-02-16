@@ -20,7 +20,6 @@ window.addEventListener("DOMContentLoaded", () =>{
     //Fetch function
     getQuestion();
     handleAnswer();
-    document.getElementById("more-info").disabled = true;
     //Prevents clicking the more info button until correct answer is chosen
     //more info button on click opens a google search for the question text in a new tab
     //This is imperfect: First Implementation had a search for the answer but that didn't always display relevant info,
@@ -28,7 +27,6 @@ window.addEventListener("DOMContentLoaded", () =>{
     //Second Implementation searches the question, which is less likely to display information lacking relevance
     //although this still has cases where the question search result lacks all relevant info.
     //**Will work on this in future rebuild. 
-    
 });
 
 
@@ -38,6 +36,9 @@ function getQuestion(){
     //It checks that one of the 3 buttons is clicked and fetches a
     //question from the clicked category. 
     addEventListener('click', (e) =>{
+        questionTemplate();
+
+        //document.getElementById("more-info").disabled = true;
         if(e.target.id === 'geography'){
             fetch("https://opentdb.com/api.php?amount=1&category=22&type=multiple")
             .then(response => response.json())
@@ -69,6 +70,7 @@ function getQuestion(){
             document.getElementById("result").innerHTML = '';
         }
     })
+
 }
 //EventListener for answer clicked. It checks that the answer is correct, and once an answer is chosen,
 //a more info button is made clickable that googles the question
@@ -77,7 +79,7 @@ function handleAnswer(){
 
         if(e.target.className === 'option'){
             console.log(e.target.innerHTML);
-            //document.getElementById("new-question").disabled = false;
+            // document.getElementById("new-question").disabled = false;
 
             if(e.target.innerHTML === document.getElementById("correct-answer").innerHTML){
                 document.getElementById("result").innerHTML = "That Is Correct!";
@@ -98,6 +100,7 @@ function handleAnswer(){
 
 //Function that Renders the Question and Answers
 function renderQuestion(data){
+    //document.getElementById("more-info").disabled = true;
     //Create array containing incorrect answers
     const answerChoices = [...data.results[0].incorrect_answers];
     //This variable was added with the hope of being able to use it for my
@@ -130,3 +133,31 @@ function renderQuestion(data){
     document.getElementById("correct-answer").innerHTML = `${data.results[0].correct_answer}`;
 }   
 
+function questionTemplate(){
+    const questionContainer = document.createElement("div")
+    const main = document.getElementsByTagName("main")
+   if(!document.getElementById("question")){ questionContainer.innerHTML = ` <div class="question-container" id="question">
+    </div>
+     <div style="display: flex" class="answer-container">
+     <br>
+         <button type="button" class="option" id="answer-text1"></button>
+     </div>  
+     <div style="display: flex" class="answer-container">
+         <button type="button" class="option" id="answer-text2"></button>
+     </div>
+     <div style="display: flex" class="answer-container">
+         <button type="button" class="option" id="answer-text3"></button>
+     </div>
+     <div style="display: flex" class="answer-container">
+         <button type="button" class="option" id="answer-text4"></button>
+     </div>
+     <br>
+     <div class="result-container">
+         <p id="result">-</p>
+         <p hidden id="correct-answer"></p>
+         <br>
+         <button onclick="getInfo()" type="button" id="more-info">More Information</button>
+     </div>`
+     //creates the template. 
+    main[0].appendChild(questionContainer);
+}}

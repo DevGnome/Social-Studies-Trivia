@@ -45,8 +45,9 @@ main{
     padding-right: 2px;
     background-color: khaki;
     height: 25px;
-    width: 375px;
+    width: 400px;
     font-size: 16px;
+    background-position: center;
     text-align:  center;
 }
 .option:hover{
@@ -64,6 +65,16 @@ main{
     background-size: cover;
     background-position: center;
     font-size: 20px;
+}
+#more-info{
+
+    background-position: center;
+    text-align:  center;
+    border: 2px solid black;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: large;
+
 }
 #history, #mythology, #geography, #politics{
     border: 2px solid black;
