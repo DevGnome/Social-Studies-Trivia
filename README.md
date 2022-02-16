@@ -11,7 +11,7 @@ Guesses can be attempted until the correct answer is chosen. Choosing an answer 
 * Will ALWAYS be multiple choice
 * There will ALWAYS be 4 choices
 * Question difficulty includes Easy, Medium and Hard
-## Future Plans
+## Potential Future Updates
 * Make CSS more visually pleasing
 * Cleaner code
 * Expand Categories 
