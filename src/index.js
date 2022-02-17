@@ -36,10 +36,11 @@ function getQuestion(){
     //It checks that one of the 3 buttons is clicked and fetches a
     //question from the clicked category. 
     addEventListener('click', (e) =>{
-        questionTemplate();
+        // questionTemplate();
 
         //document.getElementById("more-info").disabled = true;
         if(e.target.id === 'geography'){
+            questionTemplate();
             fetch("https://opentdb.com/api.php?amount=1&category=22&type=multiple")
             .then(response => response.json())
             .then(data => renderQuestion(data))
@@ -49,6 +50,7 @@ function getQuestion(){
             
         }
         else if(e.target.id === 'history'){
+            questionTemplate();
             fetch("https://opentdb.com/api.php?amount=1&category=23&type=multiple")
             .then(response => response.json())
             .then(data => renderQuestion(data)) 
@@ -56,6 +58,7 @@ function getQuestion(){
             document.getElementById("result").innerHTML = '';      
         }
         else if(e.target.id === 'mythology'){
+            questionTemplate();
             fetch("https://opentdb.com/api.php?amount=1&category=20&type=multiple")
             .then(response => response.json())
             .then(data => renderQuestion(data))
@@ -63,6 +66,7 @@ function getQuestion(){
             document.getElementById("result").innerHTML = '';        
         }
         else if(e.target.id === 'politics'){
+            questionTemplate();
             fetch("https://opentdb.com/api.php?amount=1&category=24&type=multiple")
             .then(response => response.json())
             .then(data => renderQuestion(data))
@@ -136,7 +140,7 @@ function renderQuestion(data){
 function questionTemplate(){
     const questionContainer = document.createElement("div")
     const main = document.getElementsByTagName("main")
-   if(!document.getElementById("question")){ questionContainer.innerHTML = ` <div class="question-container" id="question">
+   if(!document.getElementById("question")){questionContainer.innerHTML = ` <div class="question-container" id="question">
     </div>
      <div style="display: flex" class="answer-container">
      <br>
