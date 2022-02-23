@@ -20,25 +20,21 @@ window.addEventListener("DOMContentLoaded", () =>{
     //Fetch function
     getQuestion();
     handleAnswer();
-    //Prevents clicking the more info button until correct answer is chosen
-    //more info button on click opens a google search for the question text in a new tab
-    //This is imperfect: First Implementation had a search for the answer but that didn't always display relevant info,
-    //i.e. the answer being 6 and a search just being about the number not the relevance to the question
-    //Second Implementation searches the question, which is less likely to display information lacking relevance
-    //although this still has cases where the question search result lacks all relevant info.
-    //**Will work on this in future rebuild. 
 });
 
 
 //Get Question Function
 function getQuestion(){
     //To get the functionality I wanted I utilized this eventlistener
-    //It checks that one of the 3 buttons is clicked and fetches a
-    //question from the clicked category. 
+    //It checks that one of the 4 buttons is clicked and fetches a question from the clicked category. 
+    
+    //Prevents clicking the more info button until correct answer is chosen more info button on click opens a google search for the question text in a new tab
+    //This is imperfect: First Implementation had a search for the answer but that didn't always display relevant info, i.e. the answer being 6 and a search just
+    //being about the number not the relevance to the question.
+    //Second Implementation searches the question, which is less likely to display information lacking relevance although this still has cases where the question 
+    //search result lacks all relevant info.
+   
     addEventListener('click', (e) =>{
-        // questionTemplate();
-
-        //document.getElementById("more-info").disabled = true;
         if(e.target.id === 'geography'){
             questionTemplate();
             fetch("https://opentdb.com/api.php?amount=1&category=22&type=multiple")
@@ -76,14 +72,12 @@ function getQuestion(){
     })
 
 }
-//EventListener for answer clicked. It checks that the answer is correct, and once an answer is chosen,
-//a more info button is made clickable that googles the question
+//EventListener for answer clicked. It checks that the answer is correct. On correct choice, a more info button is enabled that Googles the question
 function handleAnswer(){
     addEventListener("click", (e)=>{
 
         if(e.target.className === 'option'){
             console.log(e.target.innerHTML);
-            // document.getElementById("new-question").disabled = false;
 
             if(e.target.innerHTML === document.getElementById("correct-answer").innerHTML){
                 document.getElementById("result").innerHTML = "That Is Correct!";
@@ -104,13 +98,11 @@ function handleAnswer(){
 
 //Function that Renders the Question and Answers
 function renderQuestion(data){
-    //document.getElementById("more-info").disabled = true;
     //Create array containing incorrect answers
     const answerChoices = [...data.results[0].incorrect_answers];
     //This variable was added with the hope of being able to use it for my
-    //handleAnswer function. I could not get it to work, which I am thinking
-    //may be due to scope maybe? It would not call in the function and might be due to the
-    //promise chain. **Look into this in future rebuild.
+    //handleAnswer function. This was not doable because of the promise chain.
+    //To access it, I'd need to change the fetch function to return the data.
     const correctAnswer = data.results[0].correct_answer;
     //Get a random index for answer choices
     data.results[0].answer = Math.floor(Math.random()*4)+1;
@@ -132,14 +124,17 @@ function renderQuestion(data){
     document.getElementById("answer-text2").innerHTML = `${answerChoices[1]}`;
     document.getElementById("answer-text3").innerHTML = `${answerChoices[2]}`;
     document.getElementById("answer-text4").innerHTML = `${answerChoices[3]}`;
-    //Put correctAnswer in a hidden tag because I can't figure out another way to get the data.result[0].correct_answer into eventlistener
-    //This is not preferred since someone could inspect the elements to find the answer if they wanted to
+    //Put correctAnswer in a hidden tag because I can't get the data.result[0].correct_answer outside of the promise chain. 
+    //This is permissable as a simplistic project, but in practice is not desirable because a user could use the dev tools to find the answer.
     document.getElementById("correct-answer").innerHTML = `${data.results[0].correct_answer}`;
 }   
 
 function questionTemplate(){
+    //To make the initial load cleaner, the containers were removed from the HTML file so that the DOM would load just the Pick A Category text and options.
+   
     const questionContainer = document.createElement("div")
     const main = document.getElementsByTagName("main")
+    //the ! logical operator prevents a new Div being created on every category click. 
    if(!document.getElementById("question")){questionContainer.innerHTML = ` <div class="question-container" id="question">
     </div>
      <div style="display: flex" class="answer-container">
