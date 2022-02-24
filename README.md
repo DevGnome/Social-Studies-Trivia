@@ -14,7 +14,7 @@ Guesses can be attempted until the correct answer is chosen. Choosing an answer 
 ## Potential Future Updates
 * ~~Make CSS more visually pleasing~~
 * Cleaner code
-* ~~Expand Categories 
+* ~~Expand Categories~~
 * Utilize a Submit button to keep answers hidden and track progress
 * Implement json-server
 
