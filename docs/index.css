@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    display:block;
+}
+
+
+body{
+    font-family: Helvetica, serif;
+    align-items: center;
+}
+
+main{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    background-size: cover;
+    background-position: center;
+    border: solid;
+    border-spacing: 5px;
+}
+.question-container{
+    text-align: left;
+    border: 2px solid black;
+    padding-left: 2px;
+    padding-right: 2px;
+    background-color: khaki;
+    height: fit-content;
+    width: 400px;
+    font-size: 20px;
+    
+}
+.option{
+    border: 2px solid black;
+    padding-left: 2px;
+    padding-right: 2px;
+    background-color: khaki;
+    height: 25px;
+    width: 400px;
+    font-size: 16px;
+    background-position: center;
+    text-align:  center;
+}
+.option:hover{
+    background-color: white;
+}
+.option:focus{
+    background-color: white;
+}
+.result-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    background-size: cover;
+    background-position: center;
+    font-size: 20px;
+}
+#more-info{
+
+    background-position: center;
+    text-align:  center;
+    border: 2px solid black;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: large;
+
+}
+#history, #mythology, #geography, #politics{
+    border: 2px solid black;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: large;
+}
